@@ -6,7 +6,7 @@ const axiosInstance = axios.create();
 const onRequest = (config: AxiosRequestConfig): AxiosRequestConfig => {
   const setHeaderToken = async () => {
     const tokenUsuario = AUTH_KEY;
-    const encodedToken = window.btoa(tokenUsuario);
+    const encodedToken = window.btoa(`:${tokenUsuario}`);
     if (tokenUsuario) {
       const configAxiosRequest = config;
       configAxiosRequest.headers = {
