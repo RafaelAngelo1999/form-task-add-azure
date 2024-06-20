@@ -15,7 +15,7 @@ const Cadastro = () => {
       {activeStepUser === 0 || activeStepUser < 1 ? (
         <Box boxShadow={2} my={10} p={6}>
           {(!ORGANIZACAO || !AUTH_KEY) && (
-            <Typography color="red" fontWeight="700">
+            <Typography color="red" fontWeight={700}>
               Clique no icone de configuração e defina as variáveis!
             </Typography>
           )}

@@ -14,15 +14,22 @@ import {
 import Settings from '@mui/icons-material/Settings';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import React, { useState } from 'react';
-import { AUTH_KEY, ORGANIZACAO } from '../constants/Environment';
+import { AUTH_KEY, ORGANIZACAO, ID_TEAMS_FORCE } from '../constants/Environment';
 
 const AppBarHeader = () => {
   const [openSettings, setOpenSettings] = useState(false);
   const [organization, setOrganization] = useState(ORGANIZACAO);
   const [authKey, setAuthKey] = useState(AUTH_KEY);
+  const [idTeamForce, setIdTeamForce] = useState(ID_TEAMS_FORCE);
 
   const handleToogleModal = () => {
     setOpenSettings((prev) => !prev);
+  };
+
+  const handleRemoveInfo = () => {
+    setOrganization('');
+    setAuthKey('');
+    setIdTeamForce('');
   };
 
   const handleSetOrganization = (value: string) => {
@@ -33,9 +40,14 @@ const AppBarHeader = () => {
     setAuthKey(value);
   };
 
+  const handleSetIdTeamForce = (value: string) => {
+    setIdTeamForce(value);
+  };
+
   const handleSubmit = () => {
     window.localStorage.setItem('organization', organization);
     window.localStorage.setItem('authKey', authKey);
+    window.localStorage.setItem('idTeamForce', idTeamForce);
     window.location.reload();
   };
 
@@ -73,12 +85,23 @@ const AppBarHeader = () => {
               onChange={(e) => handleSetOrganization(e.target.value)}
             />
             <TextField label="AuthKey" value={authKey} onChange={(e) => handleSetAuthKey(e.target.value)} />
+            <TextField label="IdTeam" value={idTeamForce} onChange={(e) => handleSetIdTeamForce(e.target.value)} />
           </Grid>
           <Grid container p={2} gap={2} justifyContent="space-between">
-            <Button onClick={handleToogleModal}>Cancelar</Button>
-            <Button variant="contained" onClick={handleSubmit}>
-              Confirmar
-            </Button>
+            <Grid justifyContent="space-between">
+              <Button variant="outlined" sx={{ marginRight: 2 }} onClick={handleToogleModal}>
+                Cancelar
+              </Button>
+              <Button sx={{ color: 'red' }} onClick={handleRemoveInfo}>
+                Apagar
+              </Button>
+            </Grid>
+
+            <Box>
+              <Button variant="contained" onClick={handleSubmit}>
+                Confirmar
+              </Button>
+            </Box>
           </Grid>
         </DialogContent>
       </Dialog>

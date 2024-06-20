@@ -18,6 +18,8 @@ const UserInformation: React.FC = () => {
   const [times, setTimes] = useState<TimeModel[]>([]);
   const [sprints, setSprints] = useState<SprintModel[]>([]);
 
+  const idTeamForce = window.localStorage.getItem('idTeamForce');
+
   const schema = yup
     .object({
       projeto: yup.string().required('Projeto obrigatorio'),
@@ -68,7 +70,7 @@ const UserInformation: React.FC = () => {
             required
             value={value || ''}
             onChange={onChange}
-            disabled={!timeAtual}
+            disabled={!timeAtual && !idTeamForce}
             error={!!error}
             helperText={error ? error.message : null}
           >
@@ -101,7 +103,7 @@ const UserInformation: React.FC = () => {
               onChange(e.target.value);
               obterSprints(e.target.value);
             }}
-            disabled={!projetoAtual}
+            disabled={!projetoAtual || !!idTeamForce}
             error={!!error}
             helperText={error ? error.message : null}
           >
@@ -133,6 +135,7 @@ const UserInformation: React.FC = () => {
             onChange={(e) => {
               onChange(e.target.value);
               obterTimes();
+              if (idTeamForce) obterSprints(idTeamForce);
             }}
             error={!!error}
             helperText={error ? error.message : null}
