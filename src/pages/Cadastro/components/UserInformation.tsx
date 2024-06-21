@@ -255,22 +255,22 @@ const UserInformation: React.FC = () => {
         sx={{ mt: 1 }}
       >
         <Grid container spacing={4} rowSpacing={1}>
-          <Grid item xs={6} height={85}>
+          <Grid item xs={12} sm={6} md={4} height={85}>
             {elementsPage.inputs.projeto}
           </Grid>
-          <Grid item xs={6} height={85}>
+          <Grid item xs={12} sm={6} md={4} height={85}>
             {elementsPage.inputs.time}
           </Grid>
-          <Grid item xs={6} height={85}>
+          <Grid item xs={12} sm={6} md={4} height={85}>
             {elementsPage.inputs.sprint}
           </Grid>
-          <Grid item xs={6} height={85}>
+          <Grid item xs={12} sm={6} md={4} height={85}>
             {elementsPage.inputs.idUS}
           </Grid>
-          <Grid item xs={10} height={85}>
+          <Grid item xs={12} sm={6} md={4} height={85}>
             {elementsPage.inputs.nameTasks}
           </Grid>
-          <Grid item xs={2} height={85}>
+          <Grid item xs={12} sm={4} md={3} height={85}>
             {elementsPage.button.buttonTaskDefault}
           </Grid>
         </Grid>
