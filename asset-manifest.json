@@ -1,11 +1,11 @@
 {
   "files": {
-    "main.js": "/form-user-add/static/js/main.4a668175.js",
-    "static/media/success.png": "/form-user-add/static/media/success.8181e78d45d1f6e768cd.png",
-    "index.html": "/form-user-add/index.html",
-    "main.4a668175.js.map": "/form-user-add/static/js/main.4a668175.js.map"
+    "main.js": "/form-task-add-azure/static/js/main.f2952b7a.js",
+    "static/media/success.png": "/form-task-add-azure/static/media/success.8181e78d45d1f6e768cd.png",
+    "index.html": "/form-task-add-azure/index.html",
+    "main.f2952b7a.js.map": "/form-task-add-azure/static/js/main.f2952b7a.js.map"
   },
   "entrypoints": [
-    "static/js/main.4a668175.js"
+    "static/js/main.f2952b7a.js"
   ]
 }
