@@ -16,7 +16,7 @@ class AzureMapper {
   }
 
   mapperTimeDtoToTimeModel(timesDto: TimeDto[]): TimeModel[] {
-    return timesDto.map((timeDto: TimeDto): TimeModel => {
+    return timesDto?.map((timeDto: TimeDto): TimeModel => {
       return {
         id: timeDto.id,
         name: timeDto.name,
@@ -25,7 +25,7 @@ class AzureMapper {
   }
 
   mapperSprintDtoToSprintModel(sprintsDto: SprintDto[]): SprintModel[] {
-    return sprintsDto.map((sprintDto: SprintDto): SprintModel => {
+    return sprintsDto?.map((sprintDto: SprintDto): SprintModel => {
       return {
         id: sprintDto.path,
         name: sprintDto.name,

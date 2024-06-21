@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { Controller, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -10,8 +10,11 @@ import AzureService from '../../../services/AzureService';
 import { ProjetoModel } from '../../../repository/models/ProjetoModel';
 import { TimeModel } from '../../../repository/models/TimeModel';
 import { SprintModel } from '../../../repository/models/SprintModel';
+import { AUTH_KEY, ORGANIZACAO } from '../../../shared/constants/Environment';
 
 const UserInformation: React.FC = () => {
+  const isFirstRender = useRef(true);
+
   const dispatch = useDispatch();
 
   const [projetos, setProjetos] = useState<ProjetoModel[]>([]);
@@ -43,7 +46,6 @@ const UserInformation: React.FC = () => {
   const timeAtual = getValues('time') as unknown as string;
 
   const obterSprints = async (time: string) => setSprints(await AzureService.obterSprints(projetoAtual, time));
-
   const obterTimes = async () => setTimes(await AzureService.obterTimes());
 
   useEffect(() => {
@@ -52,6 +54,15 @@ const UserInformation: React.FC = () => {
     }
     obterProjetos();
   }, []);
+
+  useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
+
+    if (idTeamForce) obterSprints(idTeamForce);
+  }, [projetoAtual]);
 
   // #region elements page
 
@@ -128,6 +139,7 @@ const UserInformation: React.FC = () => {
             margin="normal"
             id="projeto"
             select
+            disabled={!ORGANIZACAO || !AUTH_KEY}
             fullWidth
             label="Projeto"
             required
@@ -135,7 +147,6 @@ const UserInformation: React.FC = () => {
             onChange={(e) => {
               onChange(e.target.value);
               obterTimes();
-              if (idTeamForce) obterSprints(idTeamForce);
             }}
             error={!!error}
             helperText={error ? error.message : null}
