@@ -1,11 +1,11 @@
 {
   "files": {
-    "main.js": "/form-user-add/static/js/main.ccdcb705.js",
+    "main.js": "/form-user-add/static/js/main.4a668175.js",
     "static/media/success.png": "/form-user-add/static/media/success.8181e78d45d1f6e768cd.png",
     "index.html": "/form-user-add/index.html",
-    "main.ccdcb705.js.map": "/form-user-add/static/js/main.ccdcb705.js.map"
+    "main.4a668175.js.map": "/form-user-add/static/js/main.4a668175.js.map"
   },
   "entrypoints": [
-    "static/js/main.ccdcb705.js"
+    "static/js/main.4a668175.js"
   ]
 }
