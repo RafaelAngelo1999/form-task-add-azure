@@ -23,10 +23,12 @@ const UserInformation: React.FC = () => {
 
   const idTeamForce = window.localStorage.getItem('idTeamForce');
 
+  const timeValidation = idTeamForce ? yup.string() : yup.string().required('Time obrigatorio');
+
   const schema = yup
     .object({
       projeto: yup.string().required('Projeto obrigatorio'),
-      time: yup.string().required('Time obrigatorio'),
+      time: timeValidation,
       sprint: yup.string().required('Sprint obrigatorio'),
       idUS: yup
         .string()
@@ -221,7 +223,7 @@ const UserInformation: React.FC = () => {
         onClick={() =>
           setValue(
             'nameTasks',
-            'Atualizar status US - Active;Reunião de história;Roteiro de testes;Checklist de história;Validação em dupla;Pull request;Atualizar status US - Review',
+            '[dti flow] Reuniao de estoria;[dti Flow] Testes unitarios;[dti flow] Roteiro de Testes;[dti flow] Validação em dupla;[dti flow] Pull-Request;',
           )
         }
       >
@@ -250,6 +252,8 @@ const UserInformation: React.FC = () => {
         onSubmit={handleSubmit((data) => {
           AzureService.criarTasksDefault(data as IAddTaskDefault);
           dispatch(update(data as IAddTaskDefault));
+          alert('Criado com sucesso :)');
+          setValue('idUS', '');
         })}
         noValidate
         sx={{ mt: 1 }}
