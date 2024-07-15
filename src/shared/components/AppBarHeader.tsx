@@ -9,12 +9,14 @@ import {
   IconButton,
   TextField,
   Toolbar,
+  Tooltip,
   Typography,
 } from '@mui/material';
 import Settings from '@mui/icons-material/Settings';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import React, { useState } from 'react';
 import { AUTH_KEY, ORGANIZACAO, ID_TEAMS_FORCE } from '../constants/Environment';
+import packageJson from '../../../package.json';
 
 const AppBarHeader = () => {
   const [openSettings, setOpenSettings] = useState(false);
@@ -72,6 +74,9 @@ const AppBarHeader = () => {
           >
             <GitHubIcon />
           </IconButton>
+          <Tooltip title={packageJson.descriptionVersion}>
+            <Typography>{packageJson.version}</Typography>
+          </Tooltip>
         </Toolbar>
       </AppBar>
 

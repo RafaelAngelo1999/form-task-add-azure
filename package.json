@@ -1,7 +1,8 @@
 {
   "homepage": "https://rafaelangelo1999.github.io/form-task-add-azure",
   "name": "form-task-add-azure",
-  "version": "0.1.0",
+  "version": "0.1.1",
+  "descriptionVersion": "Ajustando obrigatoriedade do IdTeam quando forçado",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.11.4",
